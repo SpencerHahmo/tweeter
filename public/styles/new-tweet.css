@@ -1,25 +1,35 @@
 .new-tweet {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 80%;
 }
 
-#tweet-text {
+.new-tweet form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-tweet textarea {
   border-style: hidden;
   border-bottom: 4px solid black;
   background-color: transparent;
+  margin-bottom: .5em;
+  resize: none;
+  color: black;
 }
 
-button {
+.new-tweet div {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   font-family: 'Bungee', cursive;
+}
+
+.new-tweet button {
   background-color: #4056A1;
   color: #FFFFFF;
-  float: left;
 }
 
-.counter {
-  font-family: 'Bungee', cursive;
-  float: right;
+.invalid {
+  color: red;
 }
