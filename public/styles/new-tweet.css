@@ -1,0 +1,25 @@
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tweet-text {
+  border-style: hidden;
+  border-bottom: 4px solid black;
+  background-color: transparent;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  font-family: 'Bungee', cursive;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  float: left;
+}
+
+.counter {
+  font-family: 'Bungee', cursive;
+  float: right;
+}
