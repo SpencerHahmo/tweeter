@@ -1,4 +1,4 @@
-header {
+.user-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +8,5 @@ header {
   padding-top: 120px;
   color: white;
   background-color: #36000d;
-  background-image: url(http://www.transparenttextures.com/patterns/wall-4-light.png);
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-image: url(../../images/wall-4-light.png);
 }

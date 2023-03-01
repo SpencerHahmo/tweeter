@@ -1,16 +1,14 @@
-$(document).ready(function() {
-  $("#tweet-text").on("input", function () {
+$(document).ready(() => {
+  $("#tweet-text").on("input", () => {
     const charLimit = 140;
     const userInputLength = $(this).val().length;
     const count = charLimit - userInputLength;
     
-    // Gets the direct path to the element that has counter as a class
+    // Gets the direct path to the counter element
     const $counter = $(this).parent().children().children(".counter");
-
-    // Changes the text to count
     $counter.text(count);
 
-    // If the user has entered more than 140 characters
+    // If the user has entered more than 140 characters adds a class which makes the text red
     if (count < 0) {
       $counter.addClass("invalid");
     } else {
