@@ -63,11 +63,9 @@ $(document).ready(() => {
     return $tweet;
   };
 
-  $("#tweet-form").submit((event) => {
+  $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const tweet = $(this).serialize();
-    console.log("IT WORKED");
-    console.log(tweet);
     $.post("/tweets", tweet)
   });
 
