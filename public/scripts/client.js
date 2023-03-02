@@ -5,6 +5,13 @@
  */
 
 $(document).ready(() => {
+  // Function that re-encodes text so that unsafe characters are converted into a safe "encoded" representation
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const renderTweets = (tweets) => {
     $("tweets-container").empty();
     for (const tweet of tweets) {
@@ -18,16 +25,16 @@ $(document).ready(() => {
     <article class="tweet">
       <header class="tweet-header">
         <div class="user">
-          <img class="user-icon" src="${tweet.user.avatars}">
-          <h3 class="user-name">${tweet.user.name}</h3>
+          <img class="user-icon" src="${escape(tweet.user.avatars)}">
+          <h3 class="user-name">${escape(tweet.user.name)}</h3>
         </div>
         <div>
-          <h3 class="user-handle">${tweet.user.handle}</h3>
+          <h3 class="user-handle">${escape(tweet.user.handle)}</h3>
         </div>
       </header>
-      <div class="tweet-text">${tweet.content.text}</div>
+      <div class="tweet-text">${escape(tweet.content.text)}</div>
       <footer class="tweet-footer">
-        <span class="tweet-date">${timeago.format(tweet.created_at)}</span>
+        <span class="tweet-date">${escape(timeago.format(tweet.created_at))}</span>
         <div class="tweet-responses">
           <i class="fa-sharp fa-solid fa-flag"></i>
           <i class="fa-sharp fa-solid fa-retweet"></i>
