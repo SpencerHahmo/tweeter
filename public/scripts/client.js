@@ -6,7 +6,6 @@
 
 $(document).ready(() => {
   
-  // Fake data taken from initial-tweets.json
   const data = [
     {
       "user": {
@@ -35,7 +34,6 @@ $(document).ready(() => {
   const renderTweets = (tweets) => {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      console.log($tweet);
       $('#tweets-container').append($tweet);
     }
   };
@@ -64,6 +62,14 @@ $(document).ready(() => {
     </article>`)
     return $tweet;
   };
+
+  $("#tweet-form").submit((event) => {
+    event.preventDefault();
+    const tweet = $(this).serialize();
+    console.log("IT WORKED");
+    console.log(tweet);
+    $.post("/tweets", tweet)
+  });
 
   renderTweets(data);
 });
