@@ -6,9 +6,10 @@
 
 $(document).ready(() => {
   const renderTweets = (tweets) => {
+    $("tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   };
   
@@ -41,7 +42,6 @@ $(document).ready(() => {
     event.preventDefault();
     const charLimit = 140;
     const inputLength = $(this).find("#tweet-text").val().length;
-    console.log("Limit", charLimit, "actual", inputLength)
 
     if (!inputLength) {
       return alert("You can't post an empty tweet!");
@@ -49,13 +49,19 @@ $(document).ready(() => {
       return alert("You only have 140 characters of available space to use!");
     }
     const newTweet = $(this).serialize();
-    $.post("/tweets", newTweet);
+
+    // When you post successfully it resets the textarea and counter to their original values
+    $.post("/tweets", newTweet, () => {
+      $(this).find("#tweet-text").val("");
+      $(this).find(".counter").val(charLimit);
+      loadTweets();
+    });
   });
 
   const loadTweets = () => {
-    $.get("/tweets", function(newTweet) {
-      renderTweets(newTweet);
-    });
+    $.ajax("/tweets", { method: "GET", dataType: "JSON", success: (tweets) => {
+      renderTweets(tweets);
+    }});
   };
 
   loadTweets();
