@@ -49,6 +49,18 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <section id="error-messages">
+        <span id="empty-message" class="error-message">
+          <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+          You can't post an empty tweet!
+          <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+        </span>
+        <span id="too-long-message" class="error-message">
+          <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+          You only have 140 characters of available space to use!
+          <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+        </span>
+      </section>
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST" id="new-tweet-form">

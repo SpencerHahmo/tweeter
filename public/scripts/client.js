@@ -5,15 +5,20 @@
  */
 
 $(document).ready(() => {
+  // Hides the error messages on the intial load
+  $("#empty-message").hide();
+  $("#too-long-message").hide();
+
   // Function that re-encodes text so that unsafe characters are converted into a safe "encoded" representation
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
   const renderTweets = (tweets) => {
-    $("tweets-container").empty();
+    // Empties tweets-container so that duplicates don't appear
+    $("#tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
@@ -50,13 +55,23 @@ $(document).ready(() => {
     const charLimit = 140;
     const inputLength = $(this).find("#tweet-text").val().length;
 
-    if (!inputLength) {
-      return alert("You can't post an empty tweet!");
-    } else if (inputLength > charLimit) {
-      return alert("You only have 140 characters of available space to use!");
-    }
-    const newTweet = $(this).serialize();
+    // Hides an error message so multiple don't appear at once
+    $("#empty-message").hide();
+    $("#too-long-message").hide();
 
+    // If the user doesn't enter anything
+    if (!inputLength) {
+      return $("#empty-message").slideDown("fast");
+    }
+
+    // If the user enters more than 140 characters
+    if (inputLength > charLimit) {
+      return $("#too-long-message").slideDown("fast");
+    }
+
+    // If the user enters something in the field and is not over 140 characters
+    const newTweet = $(this).serialize();
+    
     // When you post successfully it resets the textarea and counter to their original values
     $.post("/tweets", newTweet, () => {
       $(this).find("#tweet-text").val("");
