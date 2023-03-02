@@ -13,8 +13,8 @@ $(document).ready(() => {
   };
   
   const createTweetElement = (tweet) => {
-    const $tweet = $(
-    `<article class="tweet">
+    const $tweet = $(`
+    <article class="tweet">
       <header class="tweet-header">
         <div class="user">
           <img class="user-icon" src="${tweet.user.avatars}">
@@ -33,14 +33,23 @@ $(document).ready(() => {
           <i class="fa-sharp fa-solid fa-heart"></i>
         </div>
       </footer>
-    </article>`)
+    </article>`);
     return $tweet;
   };
 
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
+    const charLimit = 140;
+    const inputLength = $(this).find("#tweet-text").val().length;
+    console.log("Limit", charLimit, "actual", inputLength)
+
+    if (!inputLength) {
+      return alert("You can't post an empty tweet!");
+    } else if (inputLength > charLimit) {
+      return alert("You only have 140 characters of available space to use!");
+    }
     const newTweet = $(this).serialize();
-    $.post("/tweets", newTweet)
+    $.post("/tweets", newTweet);
   });
 
   const loadTweets = () => {
