@@ -24,6 +24,7 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 
   <body>
@@ -59,30 +60,7 @@
           </div>
         </form>
       </section>
-      <section class="tweet-history">
-        <article class="tweet">
-          <header class="tweet-header">
-            <div class="user">
-              <img class="user-icon" src="/images/profile-hex.png">
-              <h3 class="user-name">Newton</h3>
-            </div>
-            <div>
-              <h3 class="user-handle">@SirIsaac</h3>
-            </div>
-          </header>
-          <div class="tweet-text">
-            If I have seen further it is by standing on the shoulder of giants
-          </div>
-          <footer class="tweet-footer">
-            <span class="tweet-date">10 days ago</span>
-            <div class="tweet-responses">
-              <i class="fa-sharp fa-solid fa-flag"></i>
-              <i class="fa-sharp fa-solid fa-retweet"></i>
-              <i class="fa-sharp fa-solid fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-      </section>
+      <section id="tweets-container"></section>
     </main>
   </body>
 </html>
