@@ -15,6 +15,10 @@ html {
  */
 
 body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
   color: #545149;  
   background-color: #c4c4c4;
   font-size: 24px;
@@ -25,30 +29,42 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- main {
+main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 90%;
   margin: 0 5%;
   font-weight: bold;
- }
+}
 
- textarea {
+textarea {
   outline: none;
   font-weight: bold;
- }
+}
 
- #error-messages {
+#error-messages {
   width: auto;
- }
+}
 
- .error-message {
+.error-message {
   display: flex;
   border: 4px solid red;
   color: red;
   padding: .5em;
   margin: .5em;
   font-family: 'Source Sans Pro', sans-serif;
- }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  main {
+    width: 200%;
+    margin: 6em 2em 0;    
+  }
+}

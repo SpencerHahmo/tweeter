@@ -1,12 +1,10 @@
 nav {
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-align: center;
   height: 120px;
   width: 100%;
-  background-color: #4056A1;
   color: #FFFFFF;
   padding: 0 1.5em;
 }
@@ -17,4 +15,18 @@ nav span {
 
 nav i {
   color: red;
+}
+
+@media only screen and (min-width: 768px) {
+  nav {
+    position: absolute;
+    background-color: transparent;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    position: fixed;
+    background-color: #4056A1;
+  }
 }

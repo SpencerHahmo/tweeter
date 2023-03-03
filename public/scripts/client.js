@@ -16,8 +16,9 @@ $(document).ready(() => {
     return div.innerHTML;
   };
 
+  // Renders the tweet data by prepending all of the tweets into the #tweets-container form
   const renderTweets = (tweets) => {
-    // Empties tweets-container so that duplicates don't appear
+    // Empties tweets-container to avoid duplicates appearing
     $("#tweets-container").empty();
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -30,11 +31,11 @@ $(document).ready(() => {
     <article class="tweet">
       <header class="tweet-header">
         <div class="user">
-          <img class="user-icon" src="${escape(tweet.user.avatars)}">
-          <h3 class="user-name">${escape(tweet.user.name)}</h3>
+          <img class="users-icon" src="${escape(tweet.user.avatars)}">
+          <h3 class="users-name">${escape(tweet.user.name)}</h3>
         </div>
         <div>
-          <h3 class="user-handle">${escape(tweet.user.handle)}</h3>
+          <h3 class="users-handle">${escape(tweet.user.handle)}</h3>
         </div>
       </header>
       <div class="tweet-text">${escape(tweet.content.text)}</div>
@@ -50,12 +51,13 @@ $(document).ready(() => {
     return $tweet;
   };
 
+  // Adds a new tweet when clickig submit
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const charLimit = 140;
     const inputLength = $(this).find("#tweet-text").val().length;
 
-    // Hides an error message so multiple don't appear at once
+    // Hides all error message so multiple don't appear at once
     $("#empty-message").hide();
     $("#too-long-message").hide();
 
@@ -68,11 +70,9 @@ $(document).ready(() => {
     if (inputLength > charLimit) {
       return $("#too-long-message").slideDown("fast");
     }
-
-    // If the user enters something in the field and is not over 140 characters
-    const newTweet = $(this).serialize();
     
     // When you post successfully it resets the textarea and counter to their original values
+    const newTweet = $(this).serialize();
     $.post("/tweets", newTweet, () => {
       $(this).find("#tweet-text").val("");
       $(this).find(".counter").val(charLimit);

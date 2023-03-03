@@ -3,10 +3,46 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 520px;
+  height: 400px;
   width: 100%;
-  padding-top: 120px;
   color: white;
   background-color: #36000d;
   background-image: url(../../images/wall-4-light.png);
+}
+
+.user-image {
+  display: flex;
+  margin: 0 1em;
+  max-width: 150px;
+  max-height: 150px;
+  height: auto;
+  width: auto;
+  justify-content: center;
+}
+
+.user-name {
+  margin-top: -30px;
+  font-size: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .user-profile {
+    padding-top: 100px;
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .user-profile {
+    margin: 7em 2em 0;
+  }
+
+  .user-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .user-name {
+    font-size: 1em;
+  }
 }
